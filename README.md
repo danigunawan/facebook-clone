@@ -1,7 +1,7 @@
 # README
 
 ## FACEBOOK CLONE
-This project is being built in accordance with the (The Odin Project)[https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project]
+This project is being built in accordance with the [The Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
 * The first milestone containing the ERD has been met.
 * This Readme will be updated as the project progresses.
 
