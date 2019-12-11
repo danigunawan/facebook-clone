@@ -6,6 +6,7 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
+      <%= link_to  post.creator.first_name, post.creator %>
       <%= image_tag post.creator.gravatar_url, :class => "gravatar" %>
       <b><%= post.creator.first_name %> said:</b> <span><%= post.content %></span>
     </li>
