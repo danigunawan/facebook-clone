@@ -1,5 +1,4 @@
-hey im root
-
+<%= link_to  "What is on your mind today?", new_post_path  %>
 
 <% if !@posts.empty? %>
 <h4>Recent posts:</h4>
@@ -7,6 +6,7 @@ hey im root
 <ul>
   <% @posts.each do |post| %>
     <li>
+      <%= image_tag post.creator.gravatar_url, :class => "gravatar" %>
       <b><%= post.creator.first_name %> said:</b> <span><%= post.content %></span>
     </li>
   <% end %>
