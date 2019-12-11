@@ -7,8 +7,8 @@
 <ul>
   <% @user.posts.each do |post| %>
     <%= image_tag post.creator.gravatar_url, :class => "gravatar" %>
-    <br>
     <span><%= post.content %></span>
+    <br>
   <% end %>
 </ul>
 <% end %>
