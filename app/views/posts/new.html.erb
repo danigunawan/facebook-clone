@@ -1,8 +1,3 @@
 <b>Share your thoughts:</b>
 
-<%= form_for @post do |f| %>
-  <%= f.label :content, "Insert your thoughts here:" %>
-  <%= f.text_area :content %>
-
-  <%= f.submit "Create" %>
-<% end %>
+<%= render 'post_form' %>

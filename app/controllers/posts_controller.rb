@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!
     def index 
-        @posts = Post.all
+      @posts = Post.all
+      @post = Post.new
     end
 
     def new
