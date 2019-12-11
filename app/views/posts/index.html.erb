@@ -1,0 +1,14 @@
+hey im root
+
+
+<% if !@posts.empty? %>
+<h4>Recent posts:</h4>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <b><%= post.creator.first_name %> said:</b> <span><%= post.content %></span>
+    </li>
+  <% end %>
+</ul>
+<% end %>
