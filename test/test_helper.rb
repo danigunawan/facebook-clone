@@ -12,20 +12,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-end
-
-require 'capybara/rails'
-require 'capybara/minitest'
-
-class ActionDispatch::IntegrationTest
-  # Make the Capybara DSL available in all integration tests
-  include Capybara::DSL
-  # Make `assert_*` methods behave like Minitest assertions
-  include Capybara::Minitest::Assertions
-
-  # Reset sessions and driver between tests
-  teardown do
-    Capybara.reset_sessions!
-    Capybara.use_default_driver
+  def log_in(user)
+    if integration_test?
+      login_as(user, scope: :user)
+    else
+      sign_in(user)
+    end
   end
 end
