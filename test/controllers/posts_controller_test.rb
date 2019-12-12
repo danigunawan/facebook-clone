@@ -5,13 +5,19 @@ require 'test_helper'
 class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  test 'should see only sign in unless signed in' do
+  setup do
     get new_user_session_path
+    sign_in users(:user_007)
+    post user_session_url
+  end
+
+  test 'should get root path after signing in' do
+    get root_path
     assert_response :success
   end
 
-  test 'should see sign up on click of sign up' do
-    get new_user_registration_path
+  test 'should get a user page' do
+    get users_path
     assert_response :success
   end
 end
