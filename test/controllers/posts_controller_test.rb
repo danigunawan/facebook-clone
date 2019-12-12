@@ -10,4 +10,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     get new_user_session_path
     assert_response :success
   end
+
+  test 'should see sign up on click of sign up' do
+    get new_user_registration_path
+    assert_response :success
+  end
 end
