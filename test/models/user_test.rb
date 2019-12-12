@@ -1,7 +1,11 @@
 require 'test_helper'
 
+def setup 
+  @user = User.new
+end
+
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "password should be present (nonblank)" do 
+    assert @user.valid? 
+  end 
 end
