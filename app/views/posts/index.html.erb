@@ -12,10 +12,14 @@
     
       <% if current_user == post.creator %>
       <%= link_to 'Edit Post' ,edit_post_path(post) %>
-      <%= link_to 'Delete Post' ,post , method: :delete %>
+      <%= link_to 'Delete Post' ,post , method: :delete %> <br>
       
-    <% end %>
-    <br><br>
+      <% end %> <br>
+      <%= pluralize(post.likes.count, 'Like') %> <br>
+      <%= link_to 'Like', {:controller => "likes", :action => "create", :post_id => post.id, } , :method=>:post  %>
+      <%= link_to 'Like', {:controller => "Comment", :action => "create", :post_id => post.id, } , :method=>:post  %>
+
+      <br><br>
     </li>
   <% end %>
 </ul>
