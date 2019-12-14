@@ -17,7 +17,14 @@
       <% end %> <br>
       <%= pluralize(post.likes.count, 'Like') %> <br>
       <%= link_to 'Like', {:controller => "likes", :action => "create", :post_id => post.id, } , :method=>:post  %>
-      <%= link_to 'Like', {:controller => "Comment", :action => "create", :post_id => post.id, } , :method=>:post  %>
+      <%= form_for @comment do |f|%>
+  <%= render 'devise/shared/error_messages', resource: f.object %>
+  <div class="field">
+        <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.text_field :comment, placeholder: "What are your thoughts about this post?" , class: 'form-control', required: true, autocomplete: 'off'%>
+  </div>
+  <%= f.submit "Comment", class: "btn btn-primary d-none" %>
+<% end %>
 
       <br><br>
     </li>
