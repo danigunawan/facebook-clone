@@ -15,13 +15,20 @@
       <%= link_to 'Delete Post' ,post , method: :delete %> <br>
       
       <% end %> <br>
-      <%= pluralize(post.likes.count, 'Like') %>  <%= pluralize(post.comments.count, 'Comment') %> <br>
+      <% if post.likes.count != 0 %>
+      <%= pluralize(post.likes.count, 'Like') %>  
+    <% end %>
+    <% if post.comments.count != 0 %>
+    <%= pluralize(post.comments.count, 'Comment') %>
+    <% end %>
+    <br>
       <%= link_to 'Like', {:controller => "likes", :action => "create", :post_id => post.id, } , :method=>:post  %>
 <ul>
+  <% if post.comments.count != 0 %>
   <% post.comments.each do |thought| %>
   <%= image_tag thought.commenter.gravatar_url, :class => "gravatar" %>
   <b><%= link_to  thought.commenter.first_name, thought.commenter %> said: </b> <span><%= thought.comment %></span>
-
+<% end %>
   <% end %>
 
 </ul>
