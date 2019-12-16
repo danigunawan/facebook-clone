@@ -20,7 +20,8 @@
       <%= image_tag current_user.gravatar_url, :class => "gravatar" %>
       <b> <%= current_user.first_name %> <%= current_user.last_name %> </b>
       <%= link_to 'Sign Out' ,destroy_user_session_path , method: :delete %>
-      <%= link_to 'Home' ,root_path%>
+      <%= link_to 'Home' ,root_path %>
+      <%= link_to 'Users' , users_path %>
     <% end %>
     <hr>
     <%= yield %>

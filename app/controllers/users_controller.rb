@@ -5,7 +5,9 @@ class UsersController < ApplicationController
 
   def home; end
 
-  def index; end
+  def index 
+    @users = User.all
+  end
 
   def new; end
 
