@@ -5,6 +5,7 @@ This project is being built in accordance with the [The Odin Project](https://ww
 * The first milestone containing the ERD has been met.
 * The second milestone containing the gem installations has been met
 * The third milestone containing User and Post models relationships including tests has been met
+* The fourth milestone containing the Likes and Comments, as well as the tests (unit and integration) for it
 * This Readme will be updated as the project progresses.
 
 This README would normally document whatever steps are necessary to get the
@@ -27,5 +28,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-
