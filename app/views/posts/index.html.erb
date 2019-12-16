@@ -15,8 +15,18 @@
       <%= link_to 'Delete Post' ,post , method: :delete %> <br>
       
       <% end %> <br>
-      <%= pluralize(post.likes.count, 'Like') %> <br>
+      <%= pluralize(post.likes.count, 'Like') %>  <%= pluralize(post.comments.count, 'Comment') %> <br>
       <%= link_to 'Like', {:controller => "likes", :action => "create", :post_id => post.id, } , :method=>:post  %>
+<ul>
+  <% post.comments.each do |thought| %>
+  <%= image_tag thought.commenter.gravatar_url, :class => "gravatar" %>
+  <b><%= link_to  thought.commenter.first_name, thought.commenter %> said: </b> <span><%= thought.comment %></span>
+
+  <% end %>
+
+</ul>
+      
+      
       <%= form_for @comment do |f|%>
   <%= render 'devise/shared/error_messages', resource: f.object %>
   <div class="field">
