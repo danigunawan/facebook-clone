@@ -3,8 +3,12 @@
 class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
-    @comment.save
-    redirect_to root_path
+    if @comment.save
+      redirect_to root_path
+    else
+      flash[:error] = 'There was an error with your comment'
+    end
+    
   end
 
   private

@@ -1,7 +1,7 @@
 <%= render 'post_form' %>
 
-<% if !@posts.empty? %>
-<h4>Recent posts:</h4>
+<h4> <%= recent(@posts) %></h4>
+
 
 <ul>
   <% @posts.each do |post| %>
@@ -9,42 +9,31 @@
       <%= time_ago_in_words(post.created_at)%> ago <br>
       <%= image_tag post.creator.gravatar_url, :class => "gravatar" %>
       <b><%= link_to  post.creator.first_name, post.creator %> said: </b> <span><%= post.content %></span>
+    <br>
+      <%= post_like_buttons(post) %> 
+      <%= post_del_buttons(post) %>
+
+      <br>
+      <%= pluralize(like_counter(post), 'Like') %>  
     
-      <% if current_user == post.creator %>
-      <%= link_to 'Edit Post' ,edit_post_path(post) %>
-      <%= link_to 'Delete Post' ,post , method: :delete %> <br>
-      
-      <% end %> <br>
-      <% if post.likes.count != 0 %>
-      <%= pluralize(post.likes.count, 'Like') %>  
-    <% end %>
-    <% if post.comments.count != 0 %>
-    <%= pluralize(post.comments.count, 'Comment') %>
-    <% end %>
+    
+    <%= pluralize(comment_counter(post), 'Comment') %>
+    
     <br>
       <%= link_to 'Like', {:controller => "likes", :action => "create", :post_id => post.id, } , :method=>:post  %>
 <ul>
-  <% if post.comments.count != 0 %>
+  
   <% post.comments.each do |thought| %>
   <%= image_tag thought.commenter.gravatar_url, :class => "gravatar" %>
   <b><%= link_to  thought.commenter.first_name, thought.commenter %> said: </b> <span><%= thought.comment %></span>
+  <br>
 <% end %>
-  <% end %>
+  
 
 </ul>
       
-      
-      <%= form_for @comment do |f|%>
-  <%= render 'devise/shared/error_messages', resource: f.object %>
-  <div class="field">
-        <%= f.hidden_field :post_id, value: post.id %>
-    <%= f.text_field :comment, placeholder: "What are your thoughts about this post?" , class: 'form-control', required: true, autocomplete: 'off'%>
-  </div>
-  <%= f.submit "Comment", class: "btn btn-primary d-none" %>
-<% end %>
-
+      <%= render 'comments/comment_form', :post_id => post.id %>
       <br><br>
     </li>
   <% end %>
 </ul>
-<% end %>
