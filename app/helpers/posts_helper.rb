@@ -10,7 +10,7 @@ module PostsHelper
     end
 
     def display_comments(post)
-       post.comments if !post.comments.empty? 
+       post.comments if post.comments.empty? 
     end
 
     def same(user,post) 

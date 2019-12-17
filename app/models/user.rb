@@ -10,4 +10,6 @@ class User < ApplicationRecord
   has_many :posts
   has_many :likes, class_name: 'Like', foreign_key: 'liker_id'
   has_many :comments, class_name: 'Comment', foreign_key: 'commenter_id'
+  has_many :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 end
