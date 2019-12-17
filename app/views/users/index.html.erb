@@ -1,6 +1,13 @@
 <ul>
 <% @user.each do |user| %>
 <li> <%= user.first_name %></li>
-
+<%= form_for @friendship do |f|%>
+  <%= render 'devise/shared/error_messages', resource: f.object %>
+  <div class="field">
+        <%= f.hidden_field :user_id, value: user.id %>
+    
+  </div>
+  <%= f.submit "SEnd Friend Request", class: "btn btn-primary d-none" %>
+<% end %>
 <% end %>
 </ul>

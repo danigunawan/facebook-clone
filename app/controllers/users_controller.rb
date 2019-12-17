@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def index 
     @user = User.all
+    @friendship = Friendship.new
   end
 
   def new; end
