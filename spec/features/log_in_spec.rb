@@ -1,18 +1,23 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
+# require '../support/request_helper'
+require 'spec_helper'
+RSpec.feature 'user sign up', type: :feature do  
+  scenario 'user needs to sign in' do
+    visit root_path
+    expect(page).to have_content('sign in')
+  end
 
-# Specs in this file have access to a helper object that includes
-# the CommentsHelper. For example:
-#
-# describe CommentsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
-RSpec.describe CommentsHelper, type: :helper do
+  scenario 'user can sign up' do
+    sign_up_with('izaias@neto.com', 'foobar', 'Izaias', 'Neto')
+    expect(page).to have_content('Sign Out')
+  end
+
+  scenario 'user can sign in' do
+    sign_in
+    expect(page).to have_content('Sign Out')
+   
+  end
+
   def sign_up_with(email, password, first_name, last_name)
     visit new_user_registration_path
     fill_in 'Email', with: email
@@ -30,4 +35,5 @@ RSpec.describe CommentsHelper, type: :helper do
     fill_in 'Password', with: 'foobar'
     click_button 'Log in'
   end
+  
 end
