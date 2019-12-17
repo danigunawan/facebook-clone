@@ -21,14 +21,7 @@ RSpec.describe CommentsController, type: :controller do
 
       scenario 'creates a valid comment for a logged in user on an existing post' do
         sign_in user
-        visit root_path #"users/#{user.id}"
+        visit root_path
         expect(page).to have_content(thought.comment)
-        # expect(Comment.count).to eql(1)
-        # sign_out user
       end
-
-      # scenario 'it is not possible to create an empty comment' do
-      #   Comment.create(commenter_id: user.id, post_id: post.id, comment: '')
-      #   expect(Comment.count).to eql(1)
-      # end
     end

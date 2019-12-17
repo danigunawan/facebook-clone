@@ -17,12 +17,6 @@ module PostsHelper
         user == post.creator
     end
 
-    def not_posted (post)
-     if   !post.empty?
-        #render
-     end
-    end
-
     def post_like_buttons(post)
         return unless post.creator == current_user
         link_to 'Edit Post' ,edit_post_path(post)
