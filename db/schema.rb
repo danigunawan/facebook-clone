@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 2019_12_17_182644) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "friends", force: :cascade do |t|
+    t.integer "requester_id"
+    t.integer "requestee_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "friendship_status", default: false
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "friend_id"

@@ -1,6 +1,7 @@
 class FriendshipsController < ApplicationController
 
     def index 
+        @requests = current_user.friend_requests
     end
 
     def create
@@ -10,6 +11,13 @@ class FriendshipsController < ApplicationController
         redirect_to users_path
        else
         flash[:error] = 'Something went wrong with your request'
+    end
+
+    def update
+        current_user.confirm_friend(params[:requester])
+    end
+
+    def destroy
     end
 end
 
