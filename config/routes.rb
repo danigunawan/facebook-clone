@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   resources :likes
   resources :comments
   resources :friendships
+  post 'confirm_friend', to: 'users#confirm_friend', as: "confirm_friend"
+  post 'decline_friend', to: 'users#decline_friend'
+  get '/friends', to:'users#friends'
 end

@@ -2,24 +2,22 @@ class FriendshipsController < ApplicationController
 
     def index 
         @requests = current_user.friend_requests
+     
     end
 
     def create
-       @friendship = current_user.friendships.build(friend_id: params[:friendship][:user_id])
-       if @friendship.save 
+       count = Friendship.where(user_id: current_user.id, friend_id: params[:friendship][:user_id] ).count
+       @friendship = current_user.friendships.build(friend_id: params[:friendship][:user_id]) if count == 0
+       if @friendship && @friendship.save 
         flash[:success] = 'Friend request succesfully sent'
-        redirect_to users_path
+        redirect_to users_path, notice: 'You just sent a request'
        else
-        flash[:error] = 'Something went wrong with your request'
-    end
-
-    def update
-        current_user.confirm_friend(params[:requester])
-    end
-
-    def destroy
+        redirect_to users_path, notice: 'Your request already exists'
     end
 end
+
+    
+
 
    
 end
