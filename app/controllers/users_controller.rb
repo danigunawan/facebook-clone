@@ -29,11 +29,8 @@ class UsersController < ApplicationController
 
   def decline_friend
     friend = User.find(params[:id])
-    request1 = Friendship.where(user_id: friend.id, friend_id: current_user.id).first
-    request2 = Friendship.where(user_id: current_user.id, friend_id: friend.id).first
-    req = request1 || request2
-    req.destroy
-    if req.destroy
+
+    if current_user.delete_friend(friend)
       redirect_back fallback_location: current_user, notice: 'You declined a frienship!'
     else
       flash[:error] = 'Something went wrong'

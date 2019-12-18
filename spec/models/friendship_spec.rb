@@ -21,6 +21,7 @@ RSpec.describe Friendship, type: :model do
       expect(user2.friend?(user)).to be_falsey
 
       user2.confirm_friend(user)
+      Friendship.create(user_id: user2.id, friend_id: user.id, confirmed: true)
       user = User.first
       user2 = User.last
 
@@ -45,8 +46,7 @@ RSpec.describe Friendship, type: :model do
       expect(user2.friend?(user)).to be true
       expect(user.friend?(user2)).to be true
 
-      friendship = Friendship.where('user_id = ? and friend_id = ?', user.id, user2.id).first
-      friendship.destroy
+      user.delete_friend(user2)
       expect(Friendship.count).to eql(0)
 
       user = User.first
