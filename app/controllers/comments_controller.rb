@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
     else
       flash[:error] = 'There was an error with your comment'
     end
-    
   end
 
   private

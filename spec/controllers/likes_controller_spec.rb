@@ -21,19 +21,19 @@ RSpec.describe LikesController, type: :controller do
     end
 
     scenario 'Logged in user should successfully like the post' do
-        sign_in user 
-        Like.create(liker_id: user.id, post_id: post.id)
-        expect(Like.count).to eql(1)
-        sign_out user
+      sign_in user
+      Like.create(liker_id: user.id, post_id: post.id)
+      expect(Like.count).to eql(1)
+      sign_out user
     end
 
     scenario 'Logged in user should successfully un-like the post' do
-        sign_in user
-        visit root_path
-        click_on 'Like'
-        expect(page).to have_content('1 Like')
-        click_on 'Like'
-        expect(page).to have_content('0 Likes')
+      sign_in user
+      visit root_path
+      click_on 'Like'
+      expect(page).to have_content('1 Like')
+      click_on 'Like'
+      expect(page).to have_content('0 Likes')
     end
-end
+  end
 end

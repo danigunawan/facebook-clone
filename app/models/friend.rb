@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Friend < ApplicationRecord
- belongs_to 
+  belongs_to
 end

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def home; end
 
-  def index 
+  def index
     @user = User.all
     @friendship = Friendship.new
   end
@@ -29,16 +29,18 @@ class UsersController < ApplicationController
 
   def decline_friend
     friend = User.find(params[:id])
-    req = Friendship.where(user_id: friend.id , friend_id: current_user.id).first || Friendship.where(user_id: current_user.id , friend_id: friend.id).first
+    request1 = Friendship.where(user_id: friend.id, friend_id: current_user.id).first
+    request2 = Friendship.where(user_id: current_user.id, friend_id: friend.id).first
+    req = request1 || request2
     req.destroy
-    if req.destroy 
-      redirect_back fallback_location: current_user, notice: 'You declined a frienship!' 
-    else 
+    if req.destroy
+      redirect_back fallback_location: current_user, notice: 'You declined a frienship!'
+    else
       flash[:error] = 'Something went wrong'
     end
   end
 
-  def friends 
+  def friends
     @friends = current_user.friends
   end
 end
