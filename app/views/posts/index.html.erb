@@ -4,7 +4,9 @@
 
 
 <ul>
+  
   <% @posts.each do |post| %>
+  <% if friendly_post(post) %>
     <li>
       <%= time_ago_in_words(post.created_at)%> ago <br>
       <%= image_tag post.creator.gravatar_url, :class => "gravatar" %>
@@ -35,5 +37,6 @@
       <%= render 'comments/comment_form', :post_id => post.id %>
       <br><br>
     </li>
+  <% end %>
   <% end %>
 </ul>

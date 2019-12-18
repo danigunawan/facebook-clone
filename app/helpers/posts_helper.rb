@@ -31,6 +31,9 @@ module PostsHelper
 
       def recent (post)
     return if post.empty?
-      'Recent posts' 
+      'Recent posts by your friends:' 
       end
+       def friendly_post(post) 
+      post if  post.creator.friend?(current_user)
+       end
 end

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def confirm_friend
     friend = User.find(params[:id])
     if current_user.confirm_friend(friend)
-      redirect_back fallback_location: current_user, notice: 'You acepted a frienship!'
+      redirect_back fallback_location: current_user, notice: 'You acepted a friendship!'
     else
       redirect_to current_user, alert: 'You can not accept this friend!'
     end
@@ -29,8 +29,13 @@ class UsersController < ApplicationController
 
   def decline_friend
     friend = User.find(params[:id])
-    req = Friendship.where(user_id: friend.id , friend_id: current_user.id).first
-    redirect_back fallback_location: current_user, notice: 'You declined a frienship!' if req.destroy
+    req = Friendship.where(user_id: friend.id , friend_id: current_user.id).first || Friendship.where(user_id: current_user.id , friend_id: friend.id).first
+    req.destroy
+    if req.destroy 
+      redirect_back fallback_location: current_user, notice: 'You declined a frienship!' 
+    else 
+      flash[:error] = 'Something went wrong'
+    end
   end
 
   def friends 
