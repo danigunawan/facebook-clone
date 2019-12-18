@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post 'confirm_friend', to: 'users#confirm_friend', as: "confirm_friend"
   post 'decline_friend', to: 'users#decline_friend'
   get '/friends', to:'users#friends'
+  get '/friendships', to: 'friendships#index'
 end
