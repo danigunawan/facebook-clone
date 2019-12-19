@@ -37,7 +37,7 @@ RSpec.configure do |config|
   # assertions if you prefer.
   config.include Capybara::DSL
   config.include Rails.application.routes.url_helpers
-  #config.include SpecTestHelper, type: :controller
+  # config.include SpecTestHelper, type: :controller
 
   config.include(OmniauthTest)
 

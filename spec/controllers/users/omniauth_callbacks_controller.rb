@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'SessionsController of OnmiAuth' do
-
   describe 'Sign in and Logout' do
     it 'can sign in user with Facebook account' do
       visit '/'
