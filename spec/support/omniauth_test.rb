@@ -1,4 +1,4 @@
-module OmniauthMacros
+module OmniauthTest
 
     def stub_omniauth
       OmniAuth.config.test_mode = true
