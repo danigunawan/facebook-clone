@@ -5,7 +5,11 @@ class UsersController < ApplicationController
 
   def home; end
 
+<<<<<<< HEAD
   def index
+=======
+  def index 
+>>>>>>> milestone-4
     @user = User.all
   end
 

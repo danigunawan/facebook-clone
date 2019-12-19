@@ -1,7 +1,7 @@
 <%= render 'post_form' %>
 
-<% if !@posts.empty? %>
-<h4>Recent posts:</h4>
+<h4> <%= recent(@posts) %></h4>
+
 
 <ul>
   <% @posts.each do |post| %>
@@ -9,14 +9,31 @@
       <%= time_ago_in_words(post.created_at)%> ago <br>
       <%= image_tag post.creator.gravatar_url, :class => "gravatar" %>
       <b><%= link_to  post.creator.first_name, post.creator %> said: </b> <span><%= post.content %></span>
+    <br>
+      <%= post_like_buttons(post) %> 
+      <%= post_del_buttons(post) %>
+
+      <br>
+      <%= pluralize(like_counter(post), 'Like') %>  
     
-      <% if current_user == post.creator %>
-      <%= link_to 'Edit Post' ,edit_post_path(post) %>
-      <%= link_to 'Delete Post' ,post , method: :delete %>
+    
+    <%= pluralize(comment_counter(post), 'Comment') %>
+    
+    <br>
+      <%= link_to 'Like', {:controller => "likes", :action => "create", :post_id => post.id, } , :method=>:post  %>
+<ul>
+  
+  <% post.comments.each do |thought| %>
+  <%= image_tag thought.commenter.gravatar_url, :class => "gravatar" %>
+  <b><%= link_to  thought.commenter.first_name, thought.commenter %> said: </b> <span><%= thought.comment %></span>
+  <br>
+<% end %>
+  
+
+</ul>
       
-    <% end %>
-    <br><br>
+      <%= render 'comments/comment_form', :post_id => post.id %>
+      <br><br>
     </li>
   <% end %>
 </ul>
-<% end %>
