@@ -36,6 +36,6 @@ module PostsHelper
   end
 
   def friendly_post(post)
-    post if post.creator.friend?(current_user)
+    post if post.creator.friend?(current_user) || post.creator == current_user
   end
 end
