@@ -22,7 +22,11 @@
       <%= link_to 'Sign Out' ,destroy_user_session_path , method: :delete %>
       <%= link_to 'Home' ,root_path %>
       <%= link_to 'Users' , users_path %>
-      <%= link_to 'Notifications' , friendships_path %>
+      
+      
+      <%= link_to  pluralize(current_user.request_counter , 'Notification') , friendships_path %>
+  
+
       <%= link_to 'Friends' , friends_path %>
     <% end %>
     <hr>

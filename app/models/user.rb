@@ -39,4 +39,9 @@ class User < ApplicationRecord
   def not_friends?(user)
     !friends.include?(user)
   end
+
+  def request_counter
+    requests = self.friend_requests.count
+    requests if requests > 0
+  end
 end
