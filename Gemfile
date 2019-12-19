@@ -12,7 +12,7 @@ gem 'rails', '~> 6.0.1'
 gem 'pg', '0.20.0'
 # Use Puma as the app server
 gem 'devise'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 4.0'
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
