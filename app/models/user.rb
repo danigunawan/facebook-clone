@@ -46,6 +46,11 @@ class User < ApplicationRecord
     !friends.include?(user)
   end
 
+  def request_counter
+    requests = self.friend_requests.count
+    requests if requests > 0
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
