@@ -40,7 +40,7 @@ RSpec.describe FriendshipsController, type: :controller do
     user2.confirm_friend(user)
     click_link('Friends')
     page.should have_selector(:link_or_button, user.first_name)
-    Friendship.first.destroy
+    user2.delete_friend(user)
     visit '/users'
     page.should have_selector(:link_or_button, 'Send Friend Request')
     expect(Friendship.count).to eql(0)
