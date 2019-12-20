@@ -6,9 +6,7 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    count = Friendship.where(user_id: current_user.id, friend_id: params[:friendship][:user_id]).count ||
-            Friendship.where(friend_id: current_user.id, user_id: params[:friendship][:user_id]).count
-    @friendship = current_user.friendships.build(friend_id: params[:friendship][:user_id]) if count.zero?
+    @friendship = current_user.friendships.build(friend_id: params[:friendship][:user_id])
     if @friendship&.save
       flash[:success] = 'Friend request succesfully sent'
       redirect_to users_path, notice: 'You just sent a request'
