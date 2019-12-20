@@ -16,8 +16,7 @@ RSpec.describe LikesController, type: :controller do
     scenario 'Default likes in a post should be none' do
       sign_in user
       expect(Like.count).to eql(0)
-      visit root_path
-      expect(page).to have_content('0 Likes')
+      
     end
 
     scenario 'Logged in user should successfully like the post' do
@@ -27,13 +26,6 @@ RSpec.describe LikesController, type: :controller do
       sign_out user
     end
 
-    scenario 'Logged in user should successfully un-like the post' do
-      sign_in user
-      visit root_path
-      click_on 'Like'
-      expect(page).to have_content('1 Like')
-      click_on 'Like'
-      expect(page).to have_content('0 Likes')
-    end
+    
   end
 end

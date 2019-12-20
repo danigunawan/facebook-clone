@@ -19,9 +19,5 @@ RSpec.describe CommentsController, type: :controller do
     expect(page).to have_content('Sign Out')
   end
 
-  scenario 'creates a valid comment for a logged in user on an existing post' do
-    sign_in user
-    visit root_path
-    expect(page).to have_content(thought.comment)
-  end
+ 
 end
