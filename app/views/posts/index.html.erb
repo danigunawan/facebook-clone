@@ -4,9 +4,37 @@
 
 
 <ul>
-  
   <% @posts.each do |post| %>
   <% if friendly_post(post) %>
+  <%# New model %>
+  <div class="card-body">
+        <%= image_tag post.creator.gravatar_url, :class => "gravatar mr-2" %> <span class="card-title"><%= link_to  post.creator.first_name, post.creator %> said:</span>
+
+      <p class="card-text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa praesentium esse magnam nemo dolor
+        sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates.
+      </p>
+      <%= post_like_buttons(post) %> 
+      <%= post_del_buttons(post) %>
+
+      <br>
+      <%= pluralize(like_counter(post), 'Like') %>  
+    
+    
+    <%= pluralize(comment_counter(post), 'Comment') %>
+      <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i><%= time_ago_in_words(post.created_at)%> ago <br></div>
+
+      <ul>
+        <% post.comments.each do |thought| %>
+        <%= image_tag thought.commenter.gravatar_url, :class => "gravatar" %>
+        <b><%= link_to  thought.commenter.first_name, thought.commenter %> said: </b> <span><%= thought.comment %></span>
+        <br>
+      <% end %>
+      <%= render 'comments/comment_form', :post_id => post.id %>
+</ul>
+  </div>
+
+  <%# Old model  %>
     <li>
       <%= time_ago_in_words(post.created_at)%> ago <br>
       <%= image_tag post.creator.gravatar_url, :class => "gravatar" %>
@@ -24,14 +52,11 @@
     <br>
       <%= link_to 'Like', {:controller => "likes", :action => "create", :post_id => post.id, } , :method=>:post  %>
 <ul>
-  
   <% post.comments.each do |thought| %>
   <%= image_tag thought.commenter.gravatar_url, :class => "gravatar" %>
   <b><%= link_to  thought.commenter.first_name, thought.commenter %> said: </b> <span><%= thought.comment %></span>
   <br>
 <% end %>
-  
-
 </ul>
       
       <%= render 'comments/comment_form', :post_id => post.id %>

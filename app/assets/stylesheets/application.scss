@@ -14,7 +14,15 @@
  *= require_self
  */
 
+ @import 'bootstrap';
+
+
 .gravatar {
-  height: 30px;
+  height: 40px;
   width: auto;
+  border-radius: 300%;
+}
+
+.card-body {
+  max-width: 450px;
 }
