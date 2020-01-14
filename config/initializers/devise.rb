@@ -3,7 +3,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.omniauth :facebook, "461965601175650", "28be9ca9ccb5cd014bbac56fb9466afc", callback_url: 'https://radiant-basin-10397.herokuapp.com/users/auth/facebook/callback' , token_params: { parse: :json } ,scope: 'email', info_fields: 'email,name'
+  config.omniauth :facebook, ENV["facebook_app_id"],ENV["facebook_secret_key"], callback_url: 'https://radiant-basin-10397.herokuapp.com/users/auth/facebook/callback' , token_params: { parse: :json } ,scope: 'email', info_fields: 'email,name'
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -299,5 +299,5 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # Omniauth config
-  #config.omniauth :facebook, "472372953684327", "104dad17b3f4baf23de7f0050c189ba7"
+ 
 end
