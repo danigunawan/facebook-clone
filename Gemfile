@@ -10,6 +10,7 @@ gem 'bundle'
 gem 'rails', '~> 6.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '0.20.0'
+gem 'figaro'
 # Use Puma as the app server
 gem 'devise'
 gem 'omniauth-facebook'
