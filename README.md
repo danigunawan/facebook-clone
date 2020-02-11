@@ -1,26 +1,25 @@
 # README
 
 ## FACEBOOK CLONE
-This project has being built in accordance with the [The Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
-You can find it [here](https://radiant-basin-10397.herokuapp.com)
+This project has being built in accordance with the [The Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project).
+You can find the live demo [here](https://radiant-basin-10397.herokuapp.com)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Things to note:
 
-Things you may want to cover:
+* This a facebook app clone using Rails
 
-* Ruby version
+* You can only view posts of your friends
 
-* System dependencies
+* You can scan through the users in order to send friend requests
 
-* Configuration
+* You can accept or ignore friend requests
 
-* Database creation
+* You can delete a request if you're no longer interested in being friends
 
-* Database initialization
+* You can delete a friend if you're tired of the friendship
 
-* How to run the test suite
+* Facebook authentication is present. You can sign in with Facebook instead of signing up.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+## Future Improvements
+* Signing in with google
+* Signing in with Github
