@@ -1,0 +1,14 @@
+
+<% @user.each do |user| %>
+
+<% if user != current_user %>
+ <% if check_status(user) %>
+ <%= link_to name(user), user %>
+  <%= button_to 'Cancel Request', decline_friend_url(id: user.id) %> 
+<% else %>
+<%= naming(user) %>
+  <%= request_form(user) %>
+  <% end %>
+  <br>
+<% end %>
+<% end %>

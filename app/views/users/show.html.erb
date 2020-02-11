@@ -1,0 +1,14 @@
+
+<br><br><br>
+<%= image_tag @user.gravatar_url, :class => "gravatar" %>
+<b> <%= @user.first_name %> <%= @user.last_name %> </b>
+
+<% if @user.posts %>
+<ul>
+  <% @user.posts.each do |post| %>
+    <%= image_tag post.creator.gravatar_url, :class => "gravatar" %>
+    <span><%= post.content %></span>
+    <br>
+  <% end %>
+</ul>
+<% end %>

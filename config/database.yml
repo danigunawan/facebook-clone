@@ -20,6 +20,9 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  username: facebook_clone
+  password: a03110991
 
 development:
   <<: *default
@@ -81,5 +84,3 @@ test:
 production:
   <<: *default
   database: facebook_clone_production
-  username: facebook_clone
-  password: <%= ENV['FACEBOOK_CLONE_DATABASE_PASSWORD'] %>
