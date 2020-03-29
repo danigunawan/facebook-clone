@@ -15,7 +15,7 @@ gem 'figaro'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
